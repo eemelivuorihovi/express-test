@@ -5,12 +5,14 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const promMid = require('express-prometheus-middleware');
 const authenticateToken = require('./authenticateToken');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const timeRouter = require('./routes/time');
 
 const app = express();
 
+app.use(cors());
 app.use(authenticateToken);
 
 // view engine setup
